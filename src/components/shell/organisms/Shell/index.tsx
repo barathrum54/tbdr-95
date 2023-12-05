@@ -8,17 +8,17 @@ import { ShellItem } from '../../atoms/ShellItem';
 export const Shell = () => {
   const shellStore = useShellStore();
   const activeItems = shellStore.activeItems;
-
   const renderComponent = (item: IShellItem) => {
+    if (!item) return null;
     const Component = item && componentMapping[item.type];
-    return Component ? <Component key={item.props.title} /> : null;
+    return Component ? <Component {...item.props} /> : null;
   };
 
   return (
     <div className="shell">
       <ShellWrapper>
         {activeItems.map((item) => (
-          <ShellItem key={item.title}>
+          <ShellItem item={item} key={item.title} initialPosition={item.component?.initialPosition || 'center'}>
             {item.component && renderComponent(item.component)}
           </ShellItem>
         ))}

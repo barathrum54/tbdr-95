@@ -1,21 +1,44 @@
 export type IShellItem = {
   type: "dialog";
   props: DialogProps;
+  initialPosition?:
+    | "center"
+    | "top-center"
+    | "bottom-center"
+    | "left-center"
+    | "right-center"
+    | "top-left"
+    | "top-right"
+    | "bottom-left"
+    | "bottom-right";
 };
 
-export type RadioButton = {
+export type IRadioButton = {
   text: string;
   value?: string;
+  checked?: boolean;
 };
 
-export type Button = {
+export type IButton = {
   text: string;
   type: "accept" | "cancel";
+  onClick?: () => void;
 };
-
+export type IInput = {
+  label: string;
+  placeholder?: string;
+};
 export type DialogProps = {
+  icon?: string;
   title: string;
   message: string;
-  radioButtons: RadioButton[];
-  buttons: Button[];
+  closeButtonDisabled?: boolean;
+  hasOverlay?: boolean;
+  radioButtons?: {
+    name: string;
+    items: IRadioButton[];
+  };
+  inputs?: IInput[];
+  defaultAction?: string;
+  buttons: IButton[];
 };

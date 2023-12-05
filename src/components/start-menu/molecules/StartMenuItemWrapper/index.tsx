@@ -3,8 +3,8 @@ import './style.scss';
 import { StartMenuContainer } from '../../atoms/StartMenuContainer';
 import { StartMenuItem } from '../../atoms/StartMenuItem';
 import { MenuItem } from '../../../../types/menu-item.types';
-import StartMenuService from '../../../services/start-menu.service';
-import ShellService from '../../../services/shell.service';
+import StartMenuService from '../../../../services/start-menu.service';
+import ShellService from '../../../../services/shell.service';
 
 type Props = {
   item: MenuItem;

@@ -1,12 +1,13 @@
-import { OverlayContainer } from "../../atoms/OverlayContainer";
+import { DialogProps } from "../../../../types/shell-item.types";
 import { DialogBox } from "../../molecules/DialogBox";
 
 
-export const Dialog = () => {
+export const Dialog = (props: DialogProps) => {
+  const { hasOverlay } = props;
   return (
 
-    <OverlayContainer>
-      <DialogBox title="diyalok" />
-    </OverlayContainer>
+
+    <DialogBox {...props} />
+
   )
 };

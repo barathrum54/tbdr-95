@@ -1,4 +1,7 @@
 .shell {
   z-index: 4;
   position: absolute;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
 }
