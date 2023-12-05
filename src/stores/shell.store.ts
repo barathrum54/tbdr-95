@@ -6,6 +6,7 @@ type ShellState = {
   removeActiveItem: (item: MenuItem) => void;
   addActiveItem: (item: MenuItem) => void;
   resetActiveItems: () => void;
+  zIndexCounter: number;
 };
 
 const actions = (set: any) => ({
@@ -23,6 +24,7 @@ const actions = (set: any) => ({
 export const useShellStore = create<ShellState>((set) => ({
   activeItems: [],
   ...actions(set),
+  zIndexCounter: 10,
 }));
 
 export const getActiveItemByTitle = (title: string) => {

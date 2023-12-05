@@ -6,4 +6,3 @@ export type MenuItem = {
   subItems?: MenuItem[];
   component?: IShellItem;
 };
-

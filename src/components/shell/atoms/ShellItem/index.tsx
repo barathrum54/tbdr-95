@@ -3,6 +3,7 @@ import './style.scss';
 import ShellService from '../../../../services/shell.service';
 import { Button } from '../../../common/atoms/Button';
 import { MenuItem } from '../../../../types/menu-item.types';
+import { useShellStore } from '../../../../stores/shell.store';
 
 type Props = {
   children: React.ReactNode;
@@ -16,8 +17,15 @@ export const ShellItem = (props: Props) => {
   const [isRendered, setIsRendered] = useState(false);
   const shellItemRef = useRef<HTMLDivElement>(null);
   const [dragging, setDragging] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const shellService = new ShellService();
+  const [zIndex, setZIndex] = useState(0);
+
+  const updateZIndex = () => {
+    const newZIndex = shellService.bringToFront();
+    setZIndex(newZIndex);
+  };
   const setItemPosition = (x: number, y: number) => {
     setPosition({ x, y });
   };
@@ -33,7 +41,11 @@ export const ShellItem = (props: Props) => {
   const handleCloseButtonClick = () => {
     component && shellService.closeActiveItem(component.props.title);
   }
-
+  useEffect(() => {
+    if (isFocused || dragging) {
+      updateZIndex();
+    }
+  }, [isFocused, dragging]);
   useEffect(() => {
     const shellItemElement = shellItemRef.current;
     if (shellItemElement) {
@@ -53,6 +65,7 @@ export const ShellItem = (props: Props) => {
       x: e.clientX - position.x,
       y: e.clientY - position.y,
     });
+    setIsFocused(true);
     e.preventDefault(); // Prevent text selection
   };
 
@@ -65,6 +78,7 @@ export const ShellItem = (props: Props) => {
 
   const onMouseUp = () => {
     setDragging(false);
+    setIsFocused(false);
   };
 
   useEffect(() => {
@@ -83,7 +97,7 @@ export const ShellItem = (props: Props) => {
   }, [dragging, dragStart.x, dragStart.y]);
   return (
     <>
-      <div ref={shellItemRef} className={`shell-item ${!isRendered ? 'hidden' : ''}`} style={{ left: position.x, top: position.y }}>
+      <div ref={shellItemRef} className={`shell-item ${!isRendered ? 'hidden' : ''} ${isFocused ? 'focused' : ''} `} style={{ left: position.x, top: position.y, zIndex: zIndex }}>
         <div className={`header ${dragging ? 'drag' : ''}`} onMouseDown={onMouseDown}>
           <div className="title">{props.item.title}</div>
           <Button variant='close' onClick={handleCloseButtonClick} text='X' />

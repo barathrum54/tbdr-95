@@ -2,7 +2,7 @@ import { MenuItem } from "../../../types/menu-item.types";
 import { RADIO_BUTTON_VALUES } from "../../radio-button.maps";
 
 export const ShutDown: MenuItem = {
-  title: "Shut Down...",
+  title: "Shut Down Windows",
   icon: "/img/shutdown.png",
   component: {
     type: "dialog",

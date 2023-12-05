@@ -38,6 +38,9 @@ class ShellService {
         break;
     }
   }
+  bringToFront() {
+    return this.shellStore.zIndexCounter++;
+  }
 }
 
 export default ShellService;
