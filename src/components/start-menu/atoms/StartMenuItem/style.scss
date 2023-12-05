@@ -1,0 +1,49 @@
+.start-menu-item {
+  background-color: transparent;
+  height: 7.1vh;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  gap: 15px;
+
+  .icon {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    align-items: center;
+
+    img {
+      object-fit: contain;
+      width: 100%;
+    }
+  }
+
+  .text {
+    font-size: 1rem;
+    text-align: left;
+    width: 50%;
+  }
+
+  .chevron {
+    width: 10%;
+    display: none;
+    font-size: 1.5rem;
+
+    &.active {
+      display: block;
+    }
+
+
+  }
+
+  &:hover {
+    background-color: #0000AA;
+    color: white;
+
+    &::before {
+      display: none;
+    }
+  }
+
+
+}

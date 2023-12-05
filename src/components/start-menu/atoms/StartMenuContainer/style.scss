@@ -1,0 +1,13 @@
+.start-menu-container {
+  background-color: #C3C7CB;
+  position: relative;
+  width: 100%;
+  height: fit-content;
+
+
+  &.submenu {
+    position: absolute;
+    right: -98%;
+    height: fit-content;
+  }
+}

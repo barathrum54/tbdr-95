@@ -1,0 +1,47 @@
+.start-menu-wrapper {
+  content: "";
+  width: 25vh;
+  height: 50vh;
+  position: absolute;
+  bottom: 5vh;
+  left: 5px;
+  display: none;
+  z-index: 3;
+  border-left: 1px solid white;
+  border-top: 1px solid white;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+
+  &.active {
+    display: flex;
+  }
+
+  .start-menu-banner {
+    display: flex;
+    width: 20%;
+    height: 100%;
+    background-color: #868A8E;
+    position: relative;
+
+    .text {
+      transform: rotate(-90deg);
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      left: 0;
+      bottom: 25px;
+      gap: 5px;
+      color: white;
+      font-size: 2rem;
+
+      h5 {
+        color: rgb(168, 168, 168);
+        font-weight: 700;
+        font-size: 2rem;
+      }
+    }
+  }
+
+}

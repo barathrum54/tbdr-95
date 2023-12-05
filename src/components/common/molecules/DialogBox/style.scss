@@ -1,0 +1,44 @@
+.dialog-box {
+  width: 450px;
+  max-width: 95vw;
+  height: 300px;
+  background-color: #C3C7CB;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 2px;
+
+  .header {
+    height: 10%;
+    background-color: #0000AA;
+    color: white;
+    display: flex;
+    padding: 3px;
+    justify-content: space-between;
+
+    .title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .close-button {
+      width: 1.5rem;
+      height: 1.5rem;
+      background-color: #C3C7CB;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      color: black;
+      font-size: 1.8rem;
+      border-left: 1px solid white;
+      border-top: 1px solid white;
+      border-right: 1px solid black;
+      border-bottom: 1px solid black;
+
+      span {
+        margin-top: -13px;
+      }
+    }
+  }
+}
