@@ -7,9 +7,11 @@ class ShellService {
 
   handleItemClick(item: MenuItem) {
     //TODO: check if item is already active
-    //TODO: Focus item if already active
+    const activeItem = this.shellStore.activeItems.find(
+      (i) => i.component?.props.title === item.title
+    );
 
-    if (item.component) {
+    if (item.component && !activeItem) {
       this.shellStore.addActiveItem(item);
     }
   }

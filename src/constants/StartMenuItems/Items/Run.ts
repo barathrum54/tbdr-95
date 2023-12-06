@@ -5,6 +5,7 @@ export const Run: MenuItem = {
   icon: "/img/run.png",
   component: {
     type: "dialog",
+    initialPosition: "center",
     props: {
       icon: "/img/run.png",
       title: "Run",

@@ -10,9 +10,25 @@ export const Shell = () => {
   const activeItems = shellStore.activeItems;
   const renderComponent = (item: IShellItem) => {
     if (!item) return null;
-    const Component = item && componentMapping[item.type];
-    return Component ? <Component {...item.props} /> : null;
+
+    switch (item.type) {
+      case "dialog":
+        const DialogComponent = componentMapping[item.type];
+        if ('props' in item) {
+          return <DialogComponent {...item.props} />;
+        }
+        break;
+      case "tabs":
+        const TabsComponent = componentMapping[item.type];
+        if ('props' in item) {
+          return <TabsComponent {...item.props} />;
+        }
+        break;
+    }
+
+    return null;
   };
+
 
   return (
     <div className="shell">

@@ -3,7 +3,6 @@ import './style.scss';
 import ShellService from '../../../../services/shell.service';
 import { Button } from '../../../common/atoms/Button';
 import { MenuItem } from '../../../../types/menu-item.types';
-import { useShellStore } from '../../../../stores/shell.store';
 
 type Props = {
   children: React.ReactNode;
@@ -21,7 +20,11 @@ export const ShellItem = (props: Props) => {
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const shellService = new ShellService();
   const [zIndex, setZIndex] = useState(shellService.bringToFront());
-  const isCloseButtonDisabled = component?.props.closeButtonDisabled;
+  const [closeButtonDisabled, setCloseButtonDisabled] = useState(false);
+
+  useEffect(() => {
+    setCloseButtonDisabled(props.item.component?.closeButtonDisabled || false);
+  }, []);
 
   const updateZIndex = () => {
     const newZIndex = shellService.bringToFront();
@@ -102,7 +105,7 @@ export const ShellItem = (props: Props) => {
       <div ref={shellItemRef} className={`shell-item ${!isRendered ? 'hidden' : ''} ${isFocused ? 'focused' : ''} `} style={{ left: position.x, top: position.y, zIndex: zIndex }}>
         <div className={`header ${dragging ? 'drag' : ''}`} onMouseDown={onMouseDown}>
           <div className="title">{props.item.title}</div>
-          <Button variant='close' onClick={handleCloseButtonClick} text='X' disabled={isCloseButtonDisabled} />
+          <Button variant='close' onClick={handleCloseButtonClick} text='X' disabled={closeButtonDisabled} />
         </div>
 
         {props.children}

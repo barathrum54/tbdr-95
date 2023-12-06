@@ -7,12 +7,12 @@ export const ShutDown: MenuItem = {
   component: {
     type: "dialog",
     initialPosition: "center",
+    closeButtonDisabled: true,
     props: {
       icon: "/img/shutdown.png",
       title: "Shut Down Windows 95",
       message: "Are you sure you want to:",
       hasOverlay: true,
-      closeButtonDisabled: true,
       radioButtons: {
         name: "shutdown-options",
         items: [

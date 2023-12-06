@@ -1,6 +1,6 @@
-export type IShellItem = {
-  type: "dialog";
-  props: DialogProps;
+export type BaseShellItem = {
+  type: "dialog" | "tabs";
+  closeButtonDisabled?: boolean;
   initialPosition?:
     | "center"
     | "top-center"
@@ -12,6 +12,15 @@ export type IShellItem = {
     | "bottom-left"
     | "bottom-right";
 };
+export interface DialogShellItem extends BaseShellItem {
+  type: "dialog";
+  props: DialogProps;
+}
+export interface TabsShellItem extends BaseShellItem {
+  type: "tabs";
+  props: TabsProps;
+}
+export type IShellItem = DialogShellItem | TabsShellItem;
 
 export type IRadioButton = {
   text: string;
@@ -32,7 +41,6 @@ export type DialogProps = {
   icon?: string;
   title: string;
   message: string;
-  closeButtonDisabled?: boolean;
   hasOverlay?: boolean;
   radioButtons?: {
     name: string;
@@ -41,4 +49,7 @@ export type DialogProps = {
   inputs?: IInput[];
   defaultAction?: string;
   buttons: IButton[];
+};
+export type TabsProps = {
+  title: string;
 };
