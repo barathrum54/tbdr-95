@@ -20,7 +20,8 @@ export const ShellItem = (props: Props) => {
   const [isFocused, setIsFocused] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const shellService = new ShellService();
-  const [zIndex, setZIndex] = useState(0);
+  const [zIndex, setZIndex] = useState(shellService.bringToFront());
+  const isCloseButtonDisabled = component?.props.closeButtonDisabled;
 
   const updateZIndex = () => {
     const newZIndex = shellService.bringToFront();
@@ -46,6 +47,7 @@ export const ShellItem = (props: Props) => {
       updateZIndex();
     }
   }, [isFocused, dragging]);
+
   useEffect(() => {
     const shellItemElement = shellItemRef.current;
     if (shellItemElement) {
@@ -100,7 +102,7 @@ export const ShellItem = (props: Props) => {
       <div ref={shellItemRef} className={`shell-item ${!isRendered ? 'hidden' : ''} ${isFocused ? 'focused' : ''} `} style={{ left: position.x, top: position.y, zIndex: zIndex }}>
         <div className={`header ${dragging ? 'drag' : ''}`} onMouseDown={onMouseDown}>
           <div className="title">{props.item.title}</div>
-          <Button variant='close' onClick={handleCloseButtonClick} text='X' />
+          <Button variant='close' onClick={handleCloseButtonClick} text='X' disabled={isCloseButtonDisabled} />
         </div>
 
         {props.children}

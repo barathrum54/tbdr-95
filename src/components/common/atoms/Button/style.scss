@@ -51,12 +51,15 @@
     }
   }
 
-  &:active,
-  &.active {
-    border-top: 2px solid #000000;
-    border-left: 2px solid #000000;
-    border-bottom: 1px solid #ffffff;
-    border-right: 1px solid #ffffff;
+  &:not(.disabled) {
+
+    &:active,
+    &.active {
+      border-top: 2px solid #000000;
+      border-left: 2px solid #000000;
+      border-bottom: 1px solid #ffffff;
+      border-right: 1px solid #ffffff;
+    }
   }
 
   &:focus>.button-inner {

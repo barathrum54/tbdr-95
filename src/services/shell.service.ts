@@ -9,21 +9,19 @@ class ShellService {
     //TODO: check if item is already active
     //TODO: Focus item if already active
 
-    console.log(item);
-    this.shellStore.addActiveItem(item);
+    if (item.component) {
+      this.shellStore.addActiveItem(item);
+    }
   }
   closeActiveItem(title: string) {
     const item = this.shellStore.activeItems.find(
       (i) => i.component?.props.title === title
     );
-    console.log(item, title);
     if (item) {
-      console.log(item);
       this.shellStore.removeActiveItem(item);
     }
   }
   executeAction(action: string) {
-    console.log("executeAction", action);
     switch (action) {
       case "github":
         actionMapping.github.callback();
