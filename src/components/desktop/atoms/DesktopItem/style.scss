@@ -1,0 +1,19 @@
+.desktop-item {
+  width: 100px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  .icon {
+    object-fit: contain;
+    width: 40px;
+    height: 40px;
+  }
+
+  span {
+    color: white;
+    font-size: 1rem;
+  }
+}
