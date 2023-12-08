@@ -24,12 +24,22 @@ export const ShellItem = (props: Props) => {
 
   useEffect(() => {
     setCloseButtonDisabled(props.item.component?.closeButtonDisabled || false);
+    if (props.item.component?.initialSize?.width && props.item.component?.initialSize?.height) {
+      setItemSize(props.item.component?.initialSize?.width, props.item.component?.initialSize?.height);
+    }
   }, []);
 
   const updateZIndex = () => {
     const newZIndex = shellService.bringToFront();
     setZIndex(newZIndex);
   };
+  const setItemSize = (width: number, height: number) => {
+    const shellItemElement = shellItemRef.current;
+    if (shellItemElement) {
+      shellItemElement.style.width = `${width}px`;
+      shellItemElement.style.height = `${height}px`;
+    }
+  }
   const setItemPosition = (x: number, y: number) => {
     setPosition({ x, y });
   };
@@ -39,6 +49,10 @@ export const ShellItem = (props: Props) => {
     if (props.initialPosition === "center") {
       pos.x = (windowWidth - itemWidth) / 2;
       pos.y = (windowHeight - itemHeight) / 2;
+    }
+    if (props.initialPosition === "bottom-left") {
+      pos.x = 5;
+      pos.y = (windowHeight - itemHeight) / (1.09);
     }
     return pos;
   };

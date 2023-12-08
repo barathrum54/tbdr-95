@@ -1,6 +1,5 @@
 .shell-item {
   height: fit-content;
-  width: fit-content;
   position: absolute;
   top: 0;
   left: 0;
@@ -13,6 +12,11 @@
   border-bottom: 1px solid black;
   padding: 2px;
   background-color: #C3C7CB;
+
+  display: flex;
+  flex-flow: column;
+  width: fit-content;
+  max-width: 95vw;
 
   &.hidden {
     visibility: hidden;

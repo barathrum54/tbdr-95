@@ -6,6 +6,10 @@ export const Help: MenuItem = {
   component: {
     type: "tabs",
     initialPosition: "center",
+    initialSize: {
+      width: 500,
+      height: 400,
+    },
     props: {
       title: "Help",
     },

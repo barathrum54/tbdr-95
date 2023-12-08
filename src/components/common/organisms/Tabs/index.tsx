@@ -1,10 +1,12 @@
 import { TabsProps } from "../../../../types/shell-item.types";
+import { TabsContainer } from "../../molecules/TabsContainer";
 
 
 export const Tabs = (props: TabsProps) => {
   return (
-    <div style={{ width: '200px', height: '200px' }}>
-      {props.title}
-    </div>
+
+
+    <TabsContainer {...props} />
+
   )
 };

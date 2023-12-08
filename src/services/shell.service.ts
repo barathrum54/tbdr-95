@@ -8,10 +8,11 @@ class ShellService {
   handleItemClick(item: MenuItem) {
     //TODO: check if item is already active
     const activeItem = this.shellStore.activeItems.find(
-      (i) => i.component?.props.title === item.title
+      (i) => i.id === item.id
     );
 
     if (item.component && !activeItem) {
+      item.id = this.shellStore.idCounter++;
       this.shellStore.addActiveItem(item);
     }
   }

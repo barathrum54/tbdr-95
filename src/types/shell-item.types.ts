@@ -11,6 +11,10 @@ export type BaseShellItem = {
     | "top-right"
     | "bottom-left"
     | "bottom-right";
+  initialSize?: {
+    width: number;
+    height: number;
+  };
 };
 export interface DialogShellItem extends BaseShellItem {
   type: "dialog";
