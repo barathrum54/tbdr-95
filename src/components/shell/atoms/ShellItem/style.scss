@@ -22,14 +22,21 @@
     visibility: hidden;
   }
 
+  &.focused {
+    .header {
+      background-color: #0000AA;
+    }
+  }
 
 
   .header {
-    background-color: #0000AA;
+    background-color: #808080;
     color: white;
     display: flex;
     padding: 3px;
     justify-content: space-between;
+
+
 
     .title {
       font-size: 1rem;

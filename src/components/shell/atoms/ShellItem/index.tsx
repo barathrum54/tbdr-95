@@ -27,6 +27,7 @@ export const ShellItem = (props: Props) => {
     if (props.item.component?.initialSize?.width && props.item.component?.initialSize?.height) {
       setItemSize(props.item.component?.initialSize?.width, props.item.component?.initialSize?.height);
     }
+    setIsFocused(true);
   }, []);
 
   const updateZIndex = () => {
@@ -79,11 +80,13 @@ export const ShellItem = (props: Props) => {
   }, [props.initialPosition]);
 
   const onMouseDown = (e: React.MouseEvent) => {
-    setDragging(true);
-    setDragStart({
-      x: e.clientX - position.x,
-      y: e.clientY - position.y,
-    });
+    if (e.target && (e.target as HTMLElement).closest('.header')) {
+      setDragging(true);
+      setDragStart({
+        x: e.clientX - position.x,
+        y: e.clientY - position.y,
+      });
+    }
     setIsFocused(true);
     e.preventDefault(); // Prevent text selection
   };
@@ -94,10 +97,24 @@ export const ShellItem = (props: Props) => {
     const newY = e.clientY - dragStart.y;
     setPosition({ x: newX, y: newY });
   };
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        shellItemRef.current &&
+        !shellItemRef.current.contains(event.target as Node)
+      ) {
+        setIsFocused(false);
+      }
+    };
 
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
   const onMouseUp = () => {
     setDragging(false);
-    setIsFocused(false);
   };
 
   useEffect(() => {
@@ -116,8 +133,8 @@ export const ShellItem = (props: Props) => {
   }, [dragging, dragStart.x, dragStart.y]);
   return (
     <>
-      <div ref={shellItemRef} className={`shell-item ${!isRendered ? 'hidden' : ''} ${isFocused ? 'focused' : ''} `} style={{ left: position.x, top: position.y, zIndex: zIndex }}>
-        <div className={`header ${dragging ? 'drag' : ''}`} onMouseDown={onMouseDown}>
+      <div onMouseDown={onMouseDown} ref={shellItemRef} className={`shell-item ${!isRendered ? 'hidden' : ''} ${isFocused ? 'focused' : ''} `} style={{ left: position.x, top: position.y, zIndex: zIndex }}>
+        <div className={`header ${dragging ? 'drag' : ''}`} >
           <div className="title">{props.item.title}</div>
           <Button variant='close' onClick={handleCloseButtonClick} text='X' disabled={closeButtonDisabled} />
         </div>
