@@ -50,7 +50,7 @@ export const Desktop = () => {
   }, [desktopService]);
   const handleDoubleClick = (item: MenuItem) => {
     console.log('Double Clicked:', item.title);
-    // Implement double click action here
+    
   };
 
   return (

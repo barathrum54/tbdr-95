@@ -54,6 +54,28 @@ export type DialogProps = {
   defaultAction?: string;
   buttons: IButton[];
 };
+
+export type ITab = {
+  title: string;
+  content: ListProps;
+};
+
 export type TabsProps = {
   title: string;
+  items: ITab[];
+};
+
+export type IHelpContent = {
+  src: string;
+};
+
+export type IListItem = {
+  title: string;
+  content?: IHelpContent;
+  subItems?: IListItem[];
+};
+
+export type ListProps = {
+  title: string;
+  items: IListItem[];
 };

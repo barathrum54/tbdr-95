@@ -1,1 +1,28 @@
-.tabs-pill {}
+.tabs-pill {
+  width: fit-content;
+  padding: 3px 5px;
+  border-radius: 5px;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #000;
+  border-top: 1px solid #fff;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  font-size: .9rem;
+  background-color: #C3C7CB;
+
+  &.active {
+    border-left: 2px solid #fff;
+    border-top: 1px solid #fff;
+    margin-top: -2px;
+
+    &:not(:first-child) {
+      margin-left: -2px;
+    }
+
+    margin-right: -2px;
+    z-index: 2;
+    box-shadow: 1px 0px 0px 0px #545454;
+    margin-bottom: -1px;
+    border-bottom: none;
+  }
+}

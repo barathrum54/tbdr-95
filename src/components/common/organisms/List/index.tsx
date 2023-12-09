@@ -1,16 +1,9 @@
-import { useState } from 'react';
 import { TabsProps } from '../../../../types/shell-item.types';
 import { TabsContent } from '../../atoms/TabsContent';
 import { TabsPill } from '../../atoms/TabsPill';
 import './style.scss';
 
-export const TabsContainer = (props: TabsProps) => {
-  const [activeTab, setActiveTab] = useState(0);
-
-  const handlePillClick = (index: number) => {
-    console.log('index', index);
-    setActiveTab(index);
-  }
+export const List = (props: TabsProps) => {
 
   return (
     <div className="tabs-container">
@@ -18,7 +11,7 @@ export const TabsContainer = (props: TabsProps) => {
         {
           props.items.map((item, index) => {
             return (
-              <TabsPill isActive={index === activeTab} onClick={() => handlePillClick(index)} key={index} text={item.title} />
+              <TabsPill key={index} text={item.title} />
             );
           })
         }
@@ -27,8 +20,8 @@ export const TabsContainer = (props: TabsProps) => {
         {
           props.items.map((item, index) => {
             return (
-              <TabsContent isActive={activeTab === index} key={index}>
-                {index}
+              <TabsContent key={index}>
+                kontent
               </TabsContent>
             );
           })

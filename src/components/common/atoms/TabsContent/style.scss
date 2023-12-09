@@ -1,1 +1,16 @@
-.tabs-content {}
+.tabs-content {
+  display: none;
+
+  border-left: 2px solid #fff;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000;
+  height: 100%;
+  width: 100%;
+  padding: 20px 10px;
+
+  &.active {
+    display: block;
+  }
+
+}
