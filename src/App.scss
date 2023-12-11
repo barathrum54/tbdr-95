@@ -1,0 +1,113 @@
+@font-face {
+  font-family: "Levi";
+  src: url("../public/fonts/levi.ttf");
+  /* IE9 Compat Modes */
+}
+
+* {
+  font-family: "Levi" !important;
+  text-rendering: optimizeSpeed;
+}
+
+.App {
+  text-align: center;
+  height: 100vh;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.shaders {
+  .crt {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: url("https://i.imgur.com/5QJq6lU.png") no-repeat center center fixed; */
+    background: url("https://t3.ftcdn.net/jpg/01/81/34/50/360_F_181345050_6Vt11wOO5R2YMJBIEoZ8HOaxr62wKhfG.jpg") repeat center center fixed;
+    background-size: 15%;
+    opacity: 0.03;
+    z-index: 99;
+    pointer-events: none;
+  }
+
+  .glass {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        rgba(0, 0, 0, 0.15) 0%,
+        rgba(0, 0, 0, 0) 25%,
+        rgba(0, 0, 0, 0) 75%,
+        rgba(0, 0, 0, 0.15) 100%);
+    opacity: 1;
+    z-index: 100;
+    pointer-events: none;
+
+    &::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg,
+          rgba(0, 0, 0, 0.2) 0%,
+          rgba(0, 0, 0, 0) 2%,
+          rgba(0, 0, 0, 0) 98%,
+          rgba(0, 0, 0, 0.2) 100%);
+      opacity: 1;
+      z-index: 100;
+      pointer-events: none;
+    }
+  }
+}
