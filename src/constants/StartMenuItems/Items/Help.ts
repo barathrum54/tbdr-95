@@ -16,7 +16,7 @@ export const Help: MenuItem = {
         {
           title: "Help Topics",
           content: {
-            title: "Skills",
+            title: "Click a topic to get help",
             items: [
               {
                 title: "Frontend",
@@ -86,6 +86,11 @@ export const Help: MenuItem = {
             ],
           },
         },
+      ],
+      buttons: [
+        { text: "OK", type: "accept" },
+        { text: "Cancel", type: "cancel" },
+        { text: "Browse", type: "accept" },
       ],
     },
   },

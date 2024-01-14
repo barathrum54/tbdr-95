@@ -8,9 +8,12 @@
   height: 100%;
   width: 100%;
   padding: 20px 10px;
+  text-align: left;
 
   &.active {
-    display: block;
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
   }
 
 }

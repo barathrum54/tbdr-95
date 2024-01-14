@@ -63,6 +63,7 @@ export type ITab = {
 export type TabsProps = {
   title: string;
   items: ITab[];
+  buttons: IButton[];
 };
 
 export type IHelpContent = {

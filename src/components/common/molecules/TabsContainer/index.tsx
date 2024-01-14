@@ -3,12 +3,12 @@ import { TabsProps } from '../../../../types/shell-item.types';
 import { TabsContent } from '../../atoms/TabsContent';
 import { TabsPill } from '../../atoms/TabsPill';
 import './style.scss';
+import { List } from '../../organisms/List';
 
 export const TabsContainer = (props: TabsProps) => {
   const [activeTab, setActiveTab] = useState(0);
 
   const handlePillClick = (index: number) => {
-    console.log('index', index);
     setActiveTab(index);
   }
 
@@ -28,7 +28,12 @@ export const TabsContainer = (props: TabsProps) => {
           props.items.map((item, index) => {
             return (
               <TabsContent isActive={activeTab === index} key={index}>
-                {index}
+                <div className="title">
+                  {item.content.title}
+                </div>
+                <div className="content">
+                  <List items={item.content.items} title={item.content.title} />
+                </div>
               </TabsContent>
             );
           })

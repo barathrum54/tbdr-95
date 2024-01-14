@@ -9,7 +9,7 @@ export const TabsContent = (props: TabsContentProps) => {
 
   return (
     <div className={`tabs-content ${props.isActive ? 'active' : ''}`}>
-      <span>{props.children}</span>
+      {props.children}
     </div>
   );
 }

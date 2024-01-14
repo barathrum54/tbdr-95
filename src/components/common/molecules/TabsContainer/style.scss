@@ -11,5 +11,17 @@
 
   .tabs-contents {
     height: 100%;
+
+    .title {}
+
+    .content {
+      background-color: white;
+      padding: 3px 5px;
+      border-left: 1px solid black;
+      border-top: 1px solid black;
+      border-bottom: 1px solid white;
+      border-right: 1px solid white;
+      height: 100%;
+    }
   }
 }

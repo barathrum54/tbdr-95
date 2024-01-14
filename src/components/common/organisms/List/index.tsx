@@ -1,33 +1,22 @@
-import { TabsProps } from '../../../../types/shell-item.types';
-import { TabsContent } from '../../atoms/TabsContent';
-import { TabsPill } from '../../atoms/TabsPill';
+import { ListProps } from '../../../../types/shell-item.types';
 import './style.scss';
 
-export const List = (props: TabsProps) => {
+export const List = (props: ListProps) => {
 
   return (
-    <div className="tabs-container">
-      <div className="tabs-pills">
+    <div className="list-container">
+      <div className="list-item">
         {
           props.items.map((item, index) => {
             return (
-              <TabsPill key={index} text={item.title} />
+              <div key={index}>
+                <div className="list-item-title">{item.title}</div>
+                {/* <div className="list-item-content">{item.title}</div> */}
+              </div>
             );
           })
         }
       </div>
-      <div className="tabs-contents">
-        {
-          props.items.map((item, index) => {
-            return (
-              <TabsContent key={index}>
-                kontent
-              </TabsContent>
-            );
-          })
-        }
-      </div>
-
     </div>
   );
 }
